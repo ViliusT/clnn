@@ -142,6 +142,47 @@ TH_API void THNN_ClSpatialUpSamplingNearest_updateGradInput(
       THClTensor *gradOutput,
       THClTensor *gradInput,
       int scale_factor);
+
+
+TH_API void THNN_ClSpatialFullConvolution_updateOutput(
+          THClState *state,
+          THClTensor *input,
+          THClTensor *output,
+          THClTensor *weight,
+          THClTensor *bias,
+          THClTensor *columns,
+          THClTensor *ones,
+          int kW, int kH,
+          int dW, int dH,
+          int padW, int padH,
+          int adjW, int adjH);
+TH_API void THNN_ClSpatialFullConvolution_updateGradInput(
+          THClState *state,
+          THClTensor *input,
+          THClTensor *gradOutput,
+          THClTensor *gradInput,
+          THClTensor *weight,
+          THClTensor *bias,
+          THClTensor *columns,
+          THClTensor *ones,
+          int kW, int kH,
+          int dW, int dH,
+          int padW, int padH,
+          int adjW, int adjH);
+TH_API void THNN_ClSpatialFullConvolution_accGradParameters(
+          THClState *state,
+          THClTensor *input,
+          THClTensor *gradOutput,
+          THClTensor *gradWeight,
+          THClTensor *gradBias,
+          THClTensor *columns,
+          THClTensor *ones,
+          int kW, int kH,
+          int dW, int dH,
+          int padW, int padH,
+          int adjW, int adjH,
+          float scale);
+
 ]]
 
 local preprocessed = string.gsub(THCLNN_h, 'TH_API ', '')
